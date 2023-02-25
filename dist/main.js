@@ -1,0 +1,1 @@
+(()=>{"use strict";const t=new class{constructor(t,o,e,s){this.title=t,this.description=o,this.duedate=e,this.done=s}}("oh yah","to do is to shop grocery","today","not done");console.log(t.title),document.querySelector(".content")})();
