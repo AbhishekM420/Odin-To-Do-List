@@ -1,5 +1,6 @@
 import { newProject } from "./newProject";
 import { ToDo } from "./ToDo";
+import { newCard } from "./domFactor";
 
 
 
@@ -12,5 +13,5 @@ const todo1 = new ToDo("oh yah","to do is to shop grocery","today","not done"); 
 
 console.log(todo1.title);
 const content = document.querySelector(".content");
-
+newCard();
 
