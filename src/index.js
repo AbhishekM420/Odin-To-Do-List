@@ -32,6 +32,6 @@ class Araaaay{
 
 const nwww = new Araaaay("fakename");
 nwww.ary.push(todo1);
-nwww.ary.push(todo2);
+AddTodo(nwww.ary,todo2)
 
 console.log(nwww);
