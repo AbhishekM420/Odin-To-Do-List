@@ -21,7 +21,7 @@ return newpr;
 }
 //newCard();
 
-class Araaaay{
+export class Araaaay{
     constructor(arrname){
         this.title = arrname;
         [arrname] = new Array();
@@ -34,4 +34,3 @@ const nwww = new Araaaay("fakename");
 nwww.ary.push(todo1);
 AddTodo(nwww.ary,todo2)
 
-console.log(nwww);
