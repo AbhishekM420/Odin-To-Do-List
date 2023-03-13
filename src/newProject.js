@@ -1,14 +1,11 @@
 import { Araaaay } from ".";
 import { ToDo } from "./ToDo";
+import { displayProject } from "./domFactor";
+import { IntakeToDo } from "./ToDo";
+import { hideForm } from "./domFactor";
+
  
-export class makeArray{
-    constructor(ProjecTtitle){                          //creates a project array
-        const newArray = new Array();
-        this.arry = newArray;
-        this.ProjecTtitle = ProjecTtitle;
-    }
-  
-}
+
 
  export function AddTodo(arraay, Todoo) {
 
@@ -33,71 +30,31 @@ export function AddNewProject(){
     subpro.setAttribute("id","submitProject")
     subpro.textContent = "Create Project";
     proDiv.appendChild(subpro);
-    subpro.addEventListener("click",CreateProject)
+    subpro.addEventListener("click",createProject)
 
 
 }
-export function CreateProject(){
+export function createProject() {       // Adding a function to accept project name and create the project array
     
     document.getElementById("newProjectBtn").disabled = false;
     const proName = document.querySelector("#ProjectName");
-    const proDiv = document.querySelector(".ProjectLineup");// Adding a function to accept project name and create the project array
     const NewProjectName = proName.value;
-    const newProjectArray = new Araaaay(NewProjectName);
+    const newProjectArray = new Araaaay(NewProjectName);    // Creates a container with the name and array ie araaay class
    
     console.log(newProjectArray.ary);
     console.log(newProjectArray.title);
-    
-    
-    const proTile = document.createElement('div');
-    proTile.textContent = proName.value;
-   // document.querySelector(".newButton").innerHTML= "";
-    proDiv.appendChild(proTile);
-    const ToDoBtn = document.createElement("button")
-    ToDoBtn.textContent = "Create To Do"
-    ToDoBtn.className = "CreateToDo"
-    proDiv.appendChild(ToDoBtn)
-    ToDoBtn.addEventListener("click", ShowToDoForm)
-    return{newProjectArray};
-
-
-}
-function hideForm()
-{
-    document.querySelector(".input").style.display = "none";
-   
-}
-
-
-function ShowToDoForm(){
-
-    document.querySelector(".input").style.display = "";
-    const SubitToDoBtn = document.createElement("button");
-    SubitToDoBtn.textContent = "Submit To Do"
-    document.querySelector(".input").appendChild(SubitToDoBtn);
-    SubitToDoBtn.addEventListener("click",IntakeToDo)
-}
-
-
-
-function IntakeToDo(){
-
-    let title = document.getElementById("Title").value;
-    let DueDate = document.getElementById("DueDate").value;
-    let Description = document.getElementById("Description").value;
-    let Done = document.getElementById("Done").value;
-
-    if( title == "" || DueDate == "" || Description == "" || Done == "")
-    return;
-    else{
-         let newTodo = new ToDo(title,Description,DueDate,Done);
-        AddTodo(CreateProject().newProjectArray.ary,newTodo);
-        console.log("hello")
-        console.log(CreateProject().newProjectArray.ary);
+    displayProject(NewProjectName);    // calls function that des dom manip to display project name.
+   //  createProject(NewProjectName);
+     return {newProjectArray};
+       // function to return the new arraay class created so that create project () is not called everytime a to do list is created
     }
 
 
-}
+
+
+
+
+
 
 
 

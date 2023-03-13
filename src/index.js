@@ -1,4 +1,3 @@
-import { makeArray } from "./newProject";
 import { ToDo } from "./ToDo";
 import { newCard } from "./domFactor";
 import { AddTodo } from "./newProject";

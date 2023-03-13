@@ -1,4 +1,6 @@
 import { DoThis } from ".";
+import { AddTodo } from "./newProject";
+import { IntakeToDo } from "./ToDo";
 // to add the various divs and other stuff to the content
 
 
@@ -31,3 +33,29 @@ for(let i = 0; i< DoThis().arry.length;i++){
 
 
   }}
+  export function displayProject( projectName){    // a dom manip function to display project titles and append create to do buttons
+
+    const proDiv = document.querySelector(".ProjectLineup");
+    const proTile = document.createElement('div');
+    proTile.textContent = projectName
+   // document.querySelector(".newButton").innerHTML= "";
+    proDiv.appendChild(proTile);
+    const ToDoBtn = document.createElement("button")
+    ToDoBtn.textContent = "Create To Do"
+    ToDoBtn.className = "CreateToDo"
+    proDiv.appendChild(ToDoBtn)
+    ToDoBtn.addEventListener("click", ShowToDoForm)
+}
+export function ShowToDoForm(){
+
+  document.querySelector(".input").style.display = "";
+  const SubitToDoBtn = document.createElement("button");
+  SubitToDoBtn.textContent = "Submit To Do"
+  document.querySelector(".input").appendChild(SubitToDoBtn);
+  SubitToDoBtn.addEventListener("click",IntakeToDo)
+}
+ export function hideForm()
+{
+    document.querySelector(".input").style.display = "none";
+   
+}
