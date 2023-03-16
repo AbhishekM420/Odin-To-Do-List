@@ -32,8 +32,12 @@ export function AddNewProject(){
     proDiv.appendChild(subpro);
     subpro.addEventListener("click",createProject)
 
+    
+ 
 
 }
+const ProjectContainerArray = new Array();  // create an array for the projects
+
 export function createProject() {       // Adding a function to accept project name and create the project array
     
     document.getElementById("newProjectBtn").disabled = false;
@@ -44,13 +48,14 @@ export function createProject() {       // Adding a function to accept project n
     console.log(newProjectArray.ary);
     console.log(newProjectArray.title);
     displayProject(NewProjectName);    // calls function that des dom manip to display project name.
-   //  createProject(NewProjectName);
-     return {newProjectArray};
-       // function to return the new arraay class created so that create project () is not called everytime a to do list is created
+   
+    ProjectContainerArray.push(newProjectArray); // pushes the new project arraaay into the project container array
+       
     }
-
-
-
+   
+export function rtnProContArr(){
+  return {ProjectContainerArray};    //exports the project container array so that it can be imported
+}
 
 
 
