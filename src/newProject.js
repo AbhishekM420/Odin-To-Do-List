@@ -1,10 +1,18 @@
-import { Araaaay } from ".";
+
 import { ToDo } from "./ToDo";
 import { displayProject } from "./domFactor";
 import { IntakeToDo } from "./ToDo";
 import { hideForm } from "./domFactor";
 
  
+export class Araaaay{
+  constructor(arrname){
+      this.title = arrname;
+      [arrname] = new Array();
+      this.ary = [arrname];
+
+  }
+}
 
 
  export function AddTodo(arraay, Todoo) {
@@ -47,9 +55,9 @@ export function createProject() {       // Adding a function to accept project n
    
     console.log(newProjectArray.ary);
     console.log(newProjectArray.title);
-    displayProject(NewProjectName);    // calls function that des dom manip to display project name.
    
     ProjectContainerArray.push(newProjectArray); // pushes the new project arraaay into the project container array
+    displayProject();    // calls function that des dom manip to display project name.
        
     }
    

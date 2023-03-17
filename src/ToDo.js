@@ -4,6 +4,7 @@
 
 import { AddTodo } from "./newProject";
 import { rtnProContArr } from "./newProject";
+import { Araaaay } from "./newProject";
 
 
 
@@ -28,9 +29,11 @@ export function IntakeToDo(){
     return;
     else{
          let newTodo = new ToDo(title,Description,DueDate,Done);   // creates new to do and pushes the newly created to do object in the array
-        AddTodo(rtnProContArr().ProjectContainerArray[0].ary,newTodo);
+        AddTodo(rtnProContArr().ProjectContainerArray[this.value].ary,newTodo);
         console.log("hello")
-        console.log(rtnProContArr().ProjectContainerArray[0].ary);
+        console.log(rtnProContArr().ProjectContainerArray[this.value].ary);
+
+        // need a function here to clear the form
     }
 
 
