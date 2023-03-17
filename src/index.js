@@ -1,6 +1,7 @@
 import { ToDo } from "./ToDo";
 import { AddTodo } from "./newProject";
 import { hideForm } from "./domFactor";
+import './style.css';
 
 
 

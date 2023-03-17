@@ -39,30 +39,28 @@ import { createProject } from "./newProject";
       const proTile = document.createElement('div');
       proTile.textContent = "Project Name :   "+ rtnProContArr().ProjectContainerArray[i].title;
       proTile.className = "ProjectTile"
-      proTile.id = i;
-      proDiv.appendChild(proTile);
+      const projectCard = document.createElement('div');
+      projectCard.id = i;
+      projectCard.className = 'projectCard';
+      proDiv.appendChild(projectCard);
+      projectCard.appendChild(proTile)
       const ToDoBtn = document.createElement("button");
       ToDoBtn.textContent = "Create To Do";
       ToDoBtn.className = "CreateToDo";
       ToDoBtn.value = i;
-      proDiv.appendChild(ToDoBtn);
+      projectCard.appendChild(ToDoBtn);
       ToDoBtn.addEventListener("click", ShowToDoForm,false);
       const DelBtn = document.createElement('button');
       DelBtn.textContent ='Delete Project';
       DelBtn.value = i ;
-      proDiv.appendChild(DelBtn);
+      projectCard.appendChild(DelBtn);
       DelBtn.addEventListener('click',DeleteProject, false);
 
-      /*for(const[key,value] of Object.entries(rtnProContArr().ProjectContainerArray[i].ary )){
-        let para = document.createElement('p');
-        para.textContent =`${key} : ${value}`;
-        console.log(`${key} : ${value}`);
-        proDiv.appendChild(para);
-      }*/
-
+      
       for(let j = 1; j <rtnProContArr().ProjectContainerArray[i].ary.length; j++){
 
         const ToDoTile = document.createElement('div');          //creating seperate cards for each todos          
+        ToDoTile.className = 'TodoTile';
         document.getElementById(i).appendChild(ToDoTile);
         for(const[key,value] of Object.entries(rtnProContArr().ProjectContainerArray[i].ary[j])){
         let para = document.createElement('p');
