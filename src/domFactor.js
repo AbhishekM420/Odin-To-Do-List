@@ -2,6 +2,9 @@ import { DeleteProject } from "./DelProjectTodo";
 import { AddTodo } from "./newProject";
 import { IntakeToDo } from "./ToDo";
 import { rtnProContArr } from "./newProject";
+import { DeleteTodo } from "./DelProjectTodo";
+import { createProject } from "./newProject";
+
 // to add the various divs and other stuff to the content
 
 
@@ -34,8 +37,9 @@ import { rtnProContArr } from "./newProject";
      for(let i = 0; i< rtnProContArr().ProjectContainerArray.length; i++) {
       
       const proTile = document.createElement('div');
-      proTile.textContent = rtnProContArr().ProjectContainerArray[i].title;
+      proTile.textContent = "Project Name :   "+ rtnProContArr().ProjectContainerArray[i].title;
       proTile.className = "ProjectTile"
+      proTile.id = i;
       proDiv.appendChild(proTile);
       const ToDoBtn = document.createElement("button");
       ToDoBtn.textContent = "Create To Do";
@@ -49,10 +53,29 @@ import { rtnProContArr } from "./newProject";
       proDiv.appendChild(DelBtn);
       DelBtn.addEventListener('click',DeleteProject, false);
 
-      for(const[key,value] of Object.entries(rtnProContArr().ProjectContainerArray[i]) ){
+      /*for(const[key,value] of Object.entries(rtnProContArr().ProjectContainerArray[i].ary )){
         let para = document.createElement('p');
-        para.textContent =`${key} : ${value}`
+        para.textContent =`${key} : ${value}`;
+        console.log(`${key} : ${value}`);
         proDiv.appendChild(para);
+      }*/
+
+      for(let j = 1; j <rtnProContArr().ProjectContainerArray[i].ary.length; j++){
+
+        const ToDoTile = document.createElement('div');          //creating seperate cards for each todos          
+        document.getElementById(i).appendChild(ToDoTile);
+        for(const[key,value] of Object.entries(rtnProContArr().ProjectContainerArray[i].ary[j])){
+        let para = document.createElement('p');
+        para.textContent =`${key} : ${value}`;
+        console.log(`${key} : ${value}`);
+        ToDoTile.appendChild(para);
+        }
+        const DeletTodoBtn = document.createElement('button');
+        DeletTodoBtn.value = j;
+        DeletTodoBtn.id = i;     // this is so that the corresponding project number can be understood while deleting
+        DeletTodoBtn.textContent = "Delete To Do"
+        ToDoTile.appendChild(DeletTodoBtn);
+        DeletTodoBtn.addEventListener("click",DeleteTodo, false)
       }
       
      } 
@@ -70,14 +93,32 @@ import { rtnProContArr } from "./newProject";
 export function ShowToDoForm(){
 
   document.querySelector(".input").style.display = "";
-  const SubitToDoBtn = document.createElement("button");
-  SubitToDoBtn.textContent = "Submit To Do"
+  const SubitToDoBtn = document.getElementById('SubmitToDoBtn');
   SubitToDoBtn.value= this.value;
-  document.querySelector(".input").appendChild(SubitToDoBtn);
   SubitToDoBtn.addEventListener("click",IntakeToDo, false)
 }
  export function hideForm()
-{
+{   
+  document.getElementById("addProject").reset();
     document.querySelector(".input").style.display = "none";
    
 }
+
+
+
+export function AddNewProject(){                       //displays form to add new project
+  hideForm()
+  document.getElementById("newProjectBtn").disabled = true;
+  const proDiv = document.querySelector(".newButton");
+  const proForm = document.createElement("input");
+  proForm.setAttribute("type", "text");
+  proForm.setAttribute("id", "ProjectName");
+  proForm.setAttribute("placeholder", "Project Name");
+  proDiv.appendChild(proForm);
+  const subpro = document.createElement('button');
+  subpro.setAttribute("id","submitProject")
+  subpro.textContent = "Create Project";
+  proDiv.appendChild(subpro);
+  subpro.addEventListener("click",createProject)
+
+  }

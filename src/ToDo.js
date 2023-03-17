@@ -4,7 +4,9 @@
 
 import { AddTodo } from "./newProject";
 import { rtnProContArr } from "./newProject";
-import { Araaaay } from "./newProject";
+import { Araaaay } from "./newProject"
+import { displayProject } from "./domFactor";
+import { hideForm } from "./domFactor";
 
 
 
@@ -32,6 +34,9 @@ export function IntakeToDo(){
         AddTodo(rtnProContArr().ProjectContainerArray[this.value].ary,newTodo);
         console.log("hello")
         console.log(rtnProContArr().ProjectContainerArray[this.value].ary);
+        hideForm();
+        document.querySelector(".ProjectLineup").innerHTML = "" ;//clearing the contents of the div so that projects dont get repeated
+        displayProject();
 
         // need a function here to clear the form
     }

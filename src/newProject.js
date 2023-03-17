@@ -3,6 +3,7 @@ import { ToDo } from "./ToDo";
 import { displayProject } from "./domFactor";
 import { IntakeToDo } from "./ToDo";
 import { hideForm } from "./domFactor";
+import { AddNewProject } from "./domFactor";
 
  
 export class Araaaay{
@@ -23,40 +24,24 @@ export class Araaaay{
 
 const nwPro = document.querySelector(".Project");
 nwPro.addEventListener("click",AddNewProject);
+const ProjectContainerArray = new Array();    // create an array for the projects
 
 
-export function AddNewProject(){
-    hideForm()
-    document.getElementById("newProjectBtn").disabled = true;
-    const proDiv = document.querySelector(".newButton");
-    const proForm = document.createElement("input");
-    proForm.setAttribute("type", "text");
-    proForm.setAttribute("id", "ProjectName");
-    proForm.setAttribute("placeholder", "Project Name");
-    proDiv.appendChild(proForm);
-    const subpro = document.createElement('button');
-    subpro.setAttribute("id","submitProject")
-    subpro.textContent = "Create Project";
-    proDiv.appendChild(subpro);
-    subpro.addEventListener("click",createProject)
-
-    
- 
-
-}
-const ProjectContainerArray = new Array();  // create an array for the projects
+  
 
 export function createProject() {       // Adding a function to accept project name and create the project array
     
     document.getElementById("newProjectBtn").disabled = false;
     const proName = document.querySelector("#ProjectName");
     const NewProjectName = proName.value;
+    document.getElementById("ProjectName").value = "";
     const newProjectArray = new Araaaay(NewProjectName);    // Creates a container with the name and array ie araaay class
    
     console.log(newProjectArray.ary);
     console.log(newProjectArray.title);
    
     ProjectContainerArray.push(newProjectArray); // pushes the new project arraaay into the project container array
+    document.querySelector(".ProjectLineup").innerHTML = "" ;
     displayProject();    // calls function that des dom manip to display project name.
        
     }
