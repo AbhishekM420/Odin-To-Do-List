@@ -4,30 +4,9 @@ import { IntakeToDo } from "./ToDo";
 import { rtnProContArr } from "./newProject";
 import { DeleteTodo } from "./DelProjectTodo";
 import { createProject } from "./newProject";
+import { DoneUndone } from "./ToDo";
 
 // to add the various divs and other stuff to the content
-
-
-
-
-
-
-/*for(let i = 0; i< DoThis().arry.length;i++){
-  const tit = document.createElement('div');
-  tit.textContent = "Title"+" : " + DoThis().arry[i].title;
-  const desc = document.createElement('div');
-  desc.textContent = "Description"+" : " + DoThis().arry[i].description;    //code might be usefull later
-  const dudate = document.createElement('div');
-  dudate.textContent = "Due Date"+" : " + DoThis().arry[i].duedate;
-  const don = document.createElement('div');
-  don.textContent = "Done"+" : " + DoThis().arry[i].done;
-
-  proCard.appendChild(tit);
-  proCard.appendChild(desc);
-  proCard.appendChild(dudate);
-  proCard.appendChild(don);
-  
-*/
 
   
   export function displayProject(){    // a dom manip function to display project titles and append create to do buttons
@@ -49,7 +28,7 @@ import { createProject } from "./newProject";
       ToDoBtn.className = "CreateToDo";
       ToDoBtn.value = i;
       projectCard.appendChild(ToDoBtn);
-      ToDoBtn.addEventListener("click", ShowToDoForm,false);
+      ToDoBtn.addEventListener("click", ShowToDoForm,false);  // calls the function to display the to do entry form
       const DelBtn = document.createElement('button');
       DelBtn.textContent ='Delete Project';
       DelBtn.value = i ;
@@ -63,30 +42,30 @@ import { createProject } from "./newProject";
         ToDoTile.className = 'TodoTile';
         document.getElementById(i).appendChild(ToDoTile);
         for(const[key,value] of Object.entries(rtnProContArr().ProjectContainerArray[i].ary[j])){
-        let para = document.createElement('p');
-        para.textContent =`${key} : ${value}`;
+        if(key != "Done"){
+          let para = document.createElement('p');
+        para.textContent =`${key} : ${value}`;       //displaying the values of the object entries
         console.log(`${key} : ${value}`);
         ToDoTile.appendChild(para);
         }
+        }
+        const Donebtn = document.createElement("button");
+        Donebtn.className = "Done";
+        Donebtn.textContent = rtnProContArr().ProjectContainerArray[i].ary[j].Done;
+        Donebtn.value = j;
+        Donebtn.id = i;
+        ToDoTile.appendChild(Donebtn);
+        Donebtn.addEventListener("click",DoneUndone,false);  //triggers function to toggle between done and undone
         const DeletTodoBtn = document.createElement('button');
         DeletTodoBtn.value = j;
         DeletTodoBtn.id = i;     // this is so that the corresponding project number can be understood while deleting
         DeletTodoBtn.textContent = "Delete To Do"
         ToDoTile.appendChild(DeletTodoBtn);
         DeletTodoBtn.addEventListener("click",DeleteTodo, false)
+
       }
       
      } 
-
-
-    
-   // document.querySelector(".newButton").innerHTML= "";
-   
-    
-    
-   
-   
-   
 }
 export function ShowToDoForm(){
 
@@ -106,7 +85,7 @@ export function ShowToDoForm(){
 
 export function AddNewProject(){                       //displays form to add new project
   hideForm()
-  document.getElementById("newProjectBtn").disabled = true;
+  document.getElementById("newProjectBtn").disabled = true;    //once clicked, the create project input appears and new project button is not required
   const proDiv = document.querySelector(".newButton");
   const proForm = document.createElement("input");
   proForm.setAttribute("type", "text");

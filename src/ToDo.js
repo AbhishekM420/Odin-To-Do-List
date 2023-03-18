@@ -12,11 +12,11 @@ import { hideForm } from "./domFactor";
 
 
 export class ToDo  {                             
-constructor (Title, Description, Duedate, Done) {
-    this.title = Title;
-    this.description = Description;
-    this.duedate = Duedate;
-    this.done = Done;
+constructor (Title, Description, Duedate) {
+    this.Title = Title;
+    this.Description = Description;
+    this.Duedate = Duedate;
+    this.Done = "Undone"; // setting the value of done to undone by default
    
 }}
 
@@ -25,12 +25,12 @@ export function IntakeToDo(){
     let title = document.getElementById("Title").value;
     let DueDate = document.getElementById("DueDate").value;               // gets the values of to do from the form 
     let Description = document.getElementById("Description").value;
-    let Done = document.getElementById("Done").value;
+    
 
-    if( title == "" || DueDate == "" || Description == "" || Done == "")
+    if( title == "" || DueDate == "" || Description == "" )
     return;
     else{
-         let newTodo = new ToDo(title,Description,DueDate,Done);   // creates new to do and pushes the newly created to do object in the array
+         let newTodo = new ToDo(title,Description,DueDate);   // creates new to do and pushes the newly created to do object in the array
         AddTodo(rtnProContArr().ProjectContainerArray[this.value].ary,newTodo);
         console.log("hello")
         console.log(rtnProContArr().ProjectContainerArray[this.value].ary);
@@ -38,8 +38,19 @@ export function IntakeToDo(){
         document.querySelector(".ProjectLineup").innerHTML = "" ;//clearing the contents of the div so that projects dont get repeated
         displayProject();
 
-        // need a function here to clear the form
+        
     }
 
 
+}
+export function DoneUndone(){
+    if (this.textContent == "Undone"){
+        this.textContent ="Done";
+        rtnProContArr().ProjectContainerArray[this.id].ary[this.value].Done = "Done"
+    }
+     else{
+        this.textContent = "Undone"
+        rtnProContArr().ProjectContainerArray[this.id].ary[this.value].Done = "Undone"
+
+     }
 }

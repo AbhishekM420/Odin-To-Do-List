@@ -6,7 +6,7 @@ import { hideForm } from "./domFactor";
 import { AddNewProject } from "./domFactor";
 
  
-export class Araaaay{
+export class Araaaay{        //class that creates the conatiner ie array to hold the todos and the project name
   constructor(arrname){
       this.title = arrname;
       [arrname] = new Array();
@@ -16,12 +16,12 @@ export class Araaaay{
 }
 
 
- export function AddTodo(arraay, Todoo) {
+ export function AddTodo(arraay, Todoo) {       // accepts an array and a todo to be added to the array
+
 
  arraay.push(Todoo);
  return arraay;
-}                                          // accepts an array and a todo to be added to the array
-
+}                                          
 const nwPro = document.querySelector(".Project");
 nwPro.addEventListener("click",AddNewProject);
 const ProjectContainerArray = new Array();    // create an array for the projects
@@ -31,7 +31,7 @@ const ProjectContainerArray = new Array();    // create an array for the project
 
 export function createProject() {       // Adding a function to accept project name and create the project array
     
-    document.getElementById("newProjectBtn").disabled = false;
+   
     const proName = document.querySelector("#ProjectName");
     const NewProjectName = proName.value;
     document.getElementById("ProjectName").value = "";
