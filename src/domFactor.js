@@ -91,6 +91,7 @@ export function AddNewProject(){                       //displays form to add ne
   proForm.setAttribute("type", "text");
   proForm.setAttribute("id", "ProjectName");
   proForm.setAttribute("placeholder", "Project Name");
+  proForm.setAttribute("required", "");
   proDiv.appendChild(proForm);
   const subpro = document.createElement('button');
   subpro.setAttribute("id","submitProject")

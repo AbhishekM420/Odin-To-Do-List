@@ -22,8 +22,7 @@ export class Araaaay{        //class that creates the conatiner ie array to hold
  arraay.push(Todoo);
  return arraay;
 }                                          
-const nwPro = document.querySelector(".Project");
-nwPro.addEventListener("click",AddNewProject);
+
 const ProjectContainerArray = new Array();    // create an array for the projects
 
 
@@ -31,8 +30,9 @@ const ProjectContainerArray = new Array();    // create an array for the project
 
 export function createProject() {       // Adding a function to accept project name and create the project array
     
-   
+    
     const proName = document.querySelector("#ProjectName");
+    if(proName.value != ""){
     const NewProjectName = proName.value;
     document.getElementById("ProjectName").value = "";
     const newProjectArray = new Araaaay(NewProjectName);    // Creates a container with the name and array ie araaay class
@@ -43,7 +43,7 @@ export function createProject() {       // Adding a function to accept project n
     ProjectContainerArray.push(newProjectArray); // pushes the new project arraaay into the project container array
     document.querySelector(".ProjectLineup").innerHTML = "" ;
     displayProject();    // calls function that des dom manip to display project name.
-       
+    } 
     }
    
 export function rtnProContArr(){
